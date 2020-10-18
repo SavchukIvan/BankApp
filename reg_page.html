@@ -6,9 +6,11 @@
     <title>RegistrationPage</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link rel="stylesheet" href="css/styles.css">
+    <script src="js/validation.js"></script>
 </head>
 <body>
     
+    <!-- навігаційна панель -->
     <nav class="navbar navbar-expand-lg navbar-custom">
 
         <a class="navbar-brand" href="index.html">BankApp</a>
@@ -24,6 +26,7 @@
 
     </nav>
 
+    <!-- реєстраційна форма -->
     <div id="form_reg">
 
         <div class="d-flex justify-content-end" id="biglogo">
@@ -33,65 +36,160 @@
         <form class="needs-validation" novalidate>
 
             <div class="form-row">
+
+              <!-- тут вказують ім'я -->
               <div class="col-md-6 mb-3">
-                <label for="validationCustom01">First name</label>
-                <input type="text" class="form-control" id="validationCustom01" value="Mark" required>
+                <label for="validationCustom01">Вкажіть ім'я</label>
+                <input type="text" class="form-control" id="validationCustom01" placeholder="Ілон" autocomplete="off" required>
                 <div class="valid-feedback">
-                  Looks good!
+                  Нормально!
                 </div>
               </div>
 
+              <!-- тут вказують прізвище -->
               <div class="col-md-6 mb-3">
-                <label for="validationCustom02">Last name</label>
-                <input type="text" class="form-control" id="validationCustom02" value="Otto" required>
+                <label for="validationCustom02">Вкажіть прізвище</label>
+                <input type="text" class="form-control" id="validationCustom02" placeholder="Маск" autocomplete="off" required>
                 <div class="valid-feedback">
-                  Looks good!
+                  Нормально!
                 </div>
               </div>
+
             </div>
 
             <div class="form-row">
-              <div class="col-md-6 mb-3">
-                <label for="validationCustom03">City</label>
-                <input type="text" class="form-control" id="validationCustom03" required>
-                <div class="invalid-feedback">
-                  Please provide a valid city.
-                </div>
-              </div>
 
+              <!-- тут вказують тип паспорту -->
               <div class="col-md-3 mb-3">
-                <label for="validationCustom04">State</label>
-                <select class="custom-select" id="validationCustom04" required>
-                  <option selected disabled value="">Choose...</option>
-                  <option>...</option>
+                <label for="validationCustom03">Тип паспорту</label>
+                <select class="custom-select" id="validationCustom03" required>
+                  <!-- це опції -->
+                  <option selected disabled value="">Оберіть...</option>
+                  <option>Книжка</option>
+                  <option>Картка</option>
                 </select>
                 <div class="invalid-feedback">
-                  Please select a valid state.
+                  Будь-ласка, оберіть тип.
                 </div>
               </div>
 
+              <!-- тут вказують номер паспорту -->
               <div class="col-md-3 mb-3">
-                <label for="validationCustom05">Zip</label>
-                <input type="text" class="form-control" id="validationCustom05" required>
+                <label for="validationCustom04">Номер паспорту</label>
+                <input type="text" class="form-control" id="validationCustom04" autocomplete="off" required>
                 <div class="invalid-feedback">
-                  Please provide a valid zip.
+                  Вкажіть номер правильно.
+                </div>
+              </div>
+
+              <!-- тут вказують ІПН -->
+              <div class="col-md-3 mb-3">
+                <label for="validationCustom05">Вкажіть ІПН</label>
+                <input type="text" class="form-control" id="validationCustom05" autocomplete="off" required>
+                <div class="invalid-feedback">
+                  Вкажіть номер правильно.
+                </div>
+              </div>
+
+              <!-- тут вказують місто -->
+              <div class="col-md-3 mb-3">
+                <label for="validationCustom06">Місто</label>
+                <input type="text" class="form-control" id="validationCustom06" placeholder="Київ" autocomplete="off" required>
+                <div class="invalid-feedback">
+                  Будь-ласка вкажіть місто.
                 </div>
               </div>
             
             </div>
+
+            <div class="form-row">
+
+              <!-- тут вказують емейл -->
+              <div class="col-md-4 mb-3">
+                <label for="validationCustom07">Email</label>
+                <input type="text" class="form-control" id="validationCustom07" placeholder="ilon@tesla.com" autocomplete="off" required>
+                <div class="invalid-feedback">
+                  Будь-ласка вкажіть email.
+                </div>
+              </div>
+
+              <!-- тут вказують номер телефону -->
+              <div class="col-md-4 mb-3">
+                <label for="validationCustom08">Номер телефону</label>
+                <input type="text" class="form-control" id="validationCustom08" placeholder="+380951801703" autocomplete="off" required>
+                <div class="invalid-feedback">
+                  Будь-ласка вкажіть номер телефону.
+                </div>
+              </div>
+
+            </div>
+
+            <div class="form-row">
+
+              <!-- тут створюют пароль -->
+              <div class="col-md-6 mb-3">
+                <label for="validationCustom09">Створіть пароль</label>
+                <input type="text" class="form-control" id="validationCustom09" placeholder="пароль" autocomplete="off" required>
+                <div class="valid-feedback">
+                  Нормально!
+                </div>
+              </div>
+
+              <!-- тут пароль підтверджуть -->
+              <div class="col-md-6 mb-3">
+                <label for="validationCustom10">Підтвердіть пароль</label>
+                <input type="text" class="form-control" id="validationCustom10" placeholder="пароль" autocomplete="off" required>
+                <div class="valid-feedback">
+                  Нормально!
+                </div>
+              </div>
+              
+            </div>
+
+            <div class="form-row">
+
+              <!-- секретне питання тут -->
+              <div class="col-md-12 mb-3">
+                <label for="validationCustom11">Оберіть секретне питання</label>
+                <select class="custom-select" id="validationCustom11" required>
+                  <option selected disabled value="">Оберіть...</option>
+                  <option>Улюблена книга</option>
+                  <option>Дівоче прізвище матері</option>
+                  <option>Улюблена страва</option>
+                  <option>Ім'я моєї хатньої тваринки</option>
+                  <option>Перша відеогра</option>
+                </select>
+              </div>
+              
+            </div>
+
+            <div class="form-row">
+
+              <!-- тут вказують відповідь до секретного питання -->
+              <div class="col-md-8 mb-3">
+                <label for="validationCustom12">Відповідь до секретного питання</label>
+                <textarea class="form-control" id="validationCustom12" aria-label="With textarea" required></textarea>
+              </div>
+              
+            </div>
+
             <div class="form-group">
+              <!-- тут вказують чекбокс на погодження з умовами -->
               <div class="form-check">
                 <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
                 <label class="form-check-label" for="invalidCheck">
-                  Agree to terms and conditions
+                  Погоджуюсь з умовами використання
                 </label>
                 <div class="invalid-feedback">
-                  You must agree before submitting.
+                  Ви маєте погодитись перед відправленням.
                 </div>
               </div>
             </div>
 
-            <button class="btn btn-primary" type="submit">Submit form</button>
+            <!-- кнопка підтвердження -->
+            <div class="d-flex justify-content-center">
+            <button class="btn btn-custom col-md-5" type="submit">Відправити дані</button>
+            </div>
           </form>
 
     </div>
@@ -100,29 +198,5 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
 
-    <!--Цей джаваскріпт взятий з сайту бустрапу
-        Потрібний для валідації форми і його
-        варто було б винести в окремий файл
-    -->
-    <script>
-        // Example starter JavaScript for disabling form submissions if there are invalid fields
-        (function() {
-          'use strict';
-          window.addEventListener('load', function() {
-            // Fetch all the forms we want to apply custom Bootstrap validation styles to
-            var forms = document.getElementsByClassName('needs-validation');
-            // Loop over them and prevent submission
-            var validation = Array.prototype.filter.call(forms, function(form) {
-              form.addEventListener('submit', function(event) {
-                if (form.checkValidity() === false) {
-                  event.preventDefault();
-                  event.stopPropagation();
-                }
-                form.classList.add('was-validated');
-              }, false);
-            });
-          }, false);
-        })();
-    </script>
 </body>
 </html>
