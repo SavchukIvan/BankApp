@@ -68,6 +68,7 @@ body {
     margin: 4%;
     border-radius: 15px;
     border-width: 1px;
+    box-shadow: 0 1px 1px rgba(250, 250, 250, 0.075) inset, 0 0 8px rgba(0, 0, 0, 0.6);
 
 }
 
@@ -95,13 +96,35 @@ body {
 
 }
 
+/* secret key form */
+#secret_in {
+    background-color: #ebebeb;
+    padding: 1%;
+    width: 50%;
+    margin: 0 auto;
+    margin-top: 1%;
+    border-radius: 15px;
+    border-width: 1px;
+    box-shadow: 0 1px 1px rgba(250, 250, 250, 0.075) inset, 0 0 8px rgba(0, 0, 0, 0.6);
+
+}
+
 /* великий напис на кожній сторінці */
 #biglogo {
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-size: 200%;
     margin-bottom: 2%;
     margin-right: 2%;
+    margin-left: 2%;
 
+}
+
+#small_logo {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 100%;
+    margin-bottom: 2%;
+    margin-right: 2%;
+    margin-left: 2%;
 }
 
 .needs-validation {
@@ -137,6 +160,33 @@ input[type="color"]:focus,
 /* кастомна кнопка */
 .btn-custom {
     background-color: #01a7e1;
+}
+
+.btn-danger {
+    margin-top: 1%;
+
+}
+
+/* for secret key form i added centered placeholder */
+/* different browsers compatability included */
+#secret_in ::-webkit-input-placeholder { /* Chrome */
+    text-align: center;
+
+}
+ 
+#secret_in ::-moz-placeholder { /* Firefox 18- */
+    text-align: center;
+
+}
+ 
+#secret_in ::-moz-placeholder {  /* Firefox 19+ */
+    text-align: center;
+
+}
+ 
+#secret_in ::-ms-input-placeholder {  /* Microsoft */
+    text-align: center;
+
 }
 /*
     End section
