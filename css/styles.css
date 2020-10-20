@@ -191,3 +191,124 @@ input[type="color"]:focus,
 /*
     End section
 */
+
+/* Everything about USER PAGE */
+
+#user_div {
+    height: 100vh;
+}
+
+hr {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.8);
+}
+
+#user_name {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 150%;
+
+}
+
+.card-menu {
+    margin: 2% 10%;
+    padding: 0;
+
+}
+
+.card-menu:hover {
+    background-color: rgba(254, 213, 156, 0.5);
+    transition: 0.15s;
+} 
+
+a {
+    color: black;
+
+}
+
+a:hover, a:active {
+    text-decoration: none;
+    color: inherit; 
+
+}
+
+.fa-plus {
+    width: 100%;
+    color: #01a7e1;
+
+}
+
+a:hover i {
+    color: #ffa630;
+
+}
+
+html,body {
+    height: 100%;
+}
+
+#user_panel {
+    height: 25%;
+    background-color: #ebebeb;
+}
+
+#menu_div {
+    width: 100%;
+    margin: 0 auto;
+    margin-top: 3%;
+    margin-bottom: 3%;
+}
+
+hr {
+    width: 100%;
+}
+
+.btn-lg {
+    width: 80%;
+}
+
+@media screen and (min-width: 580px) {
+    #user_panel {
+        height: 100%;
+        background-color: #ebebeb;
+    }
+    .card-custom {
+        margin-right: 3%;
+    }
+}
+
+.card-custom {
+    background-color: yellow;
+    margin-top: 3%;
+    border-radius: 15px;
+    border-width: 1px;
+    box-shadow: 0 1px 1px rgba(250, 250, 250, 0.075) inset, 0 0 5px rgba(0, 0, 0, 0.8);
+}
+
+#card_line {
+    background-color: black;
+    color: white;
+    font-size: 110%;
+    padding: 3%;
+}
+
+#circle1 {
+    margin-right: 10%;
+    position: absolute;
+    background: #EB001B;
+    border-radius: 50%;
+    width: 4em;
+    height: 4em;
+}
+
+#circle2 {
+    background: #F79E1B;
+    border-radius: 50%;
+    width: 4em;
+    height: 4em;
+}
+
+/*
+    End section
+*/
