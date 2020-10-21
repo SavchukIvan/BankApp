@@ -96,6 +96,26 @@ body {
 
 }
 
+#form_card {
+    background-color: white;
+    padding: 1%;
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 5%;
+    border-radius: 15px;
+    border-width: 1px;
+}
+
+@media only screen and (min-width: 580px) {
+    #form_card {
+        background-color: white;
+        margin-top: 1%;
+    }
+
+}
+
+
+
 /* secret key form */
 #secret_in {
     background-color: #ebebeb;
