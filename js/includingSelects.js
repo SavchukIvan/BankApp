@@ -1,20 +1,30 @@
 /*
 This script must be added after scripts registrationFormValidation.js and regionsDistrictsCities.js
 because it uses constant variables 
-- from first one:
-	form, passportType, passportSeries, passportID, region, district and city.
-	Also it uses unsetValidStatus function
-- from second one:
-	regions and districts
+- from first one: form, passportType, passportSeries, passportID, region, district and city;
+- from second one: regions and districts.
 */
 
-var lastPassportType = '';
+var lastPassportTypeValue = '';
+
+var lastRegionValue = '';
+var lastDistrictValue = '';
+
+
+/*
+unsetValidStatus drops succes or error feedback for element
+*/
+function unsetValidStatus(element){
+	element.classList.remove("is-valid");
+	element.classList.remove("is-invalid");
+}
+
 
 function onSelectPassportType(event){
 	var value = passportType.value;
 
-	if (value === lastPassportType) return;
-	lastPassportType = value;
+	if (value === lastPassportTypeValue) return;
+	lastPassportTypeValue = value;
 
 	unsetValidStatus(passportSeries);
 	unsetValidStatus(passportID);
@@ -34,6 +44,46 @@ function onSelectPassportType(event){
 }
 
 passportType.addEventListener('blur', onSelectPassportType);
+
+
+function onSelectRegion(event){
+	var value = region.value;
+
+	if (value === lastRegionValue) return;
+	lastRegionValue = value;
+
+	unsetValidStatus(district);
+	unsetValidStatus(city);
+	district.value = '';
+
+	district.removeAttribute('disabled');
+	city.setAttribute('disabled', "");
+	district.value = '';
+	city.value = '';
+
+	district.innerHTML = createOptions(regions.get(value));
+}
+
+
+function onSelectDistrict(event){
+	var value = district.value;
+
+	if (value === lastDistrictValue) return;
+	lastDistrictValue = value;
+
+	unsetValidStatus(city);
+
+	city.removeAttribute('disabled');
+	city.value = '';
+
+	city.innerHTML = createOptions(districts.get(value));
+}
+
+
+
+region.addEventListener('blur', onSelectRegion);
+district.addEventListener('blur', onSelectDistrict);
+
 
 
 function createOptions(options, defaultOptionText="Обрати..."){
