@@ -1,8 +1,11 @@
 /*
-This script must be added after script registrationFormValidation.js
-because it uses constant variables:
-form, passportType, passportSeries, passportID, region, district and city
-from specified script. Also it uses unsetValidStatus function
+This script must be added after scripts registrationFormValidation.js and regionsDistrictsCities.js
+because it uses constant variables 
+- from first one:
+	form, passportType, passportSeries, passportID, region, district and city.
+	Also it uses unsetValidStatus function
+- from second one:
+	regions and districts
 */
 
 var lastPassportType = '';
@@ -31,3 +34,18 @@ function onSelectPassportType(event){
 }
 
 passportType.addEventListener('blur', onSelectPassportType);
+
+
+function createOptions(options, defaultOptionText="Обрати..."){
+	var selectInner = "<option selected disabled value=\"\">"+defaultOptionText+"</option>";
+	var option;
+
+	for (var i = 0; i < options.length; i++){
+		option = options[i];
+		selectInner = selectInner+"\n"+"<option value=\""+option+"\">"+option+"</option>";
+	}
+	return selectInner;
+}
+
+
+region.innerHTML = createOptions(Array.from(regions.keys()));
