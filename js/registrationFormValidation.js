@@ -236,10 +236,20 @@ function checkPhone(event){
 
 
 /*
+password validator uses last value of password to make some actions
+*/
+var lastPasswordValue = "";
+/*
 Listener for validation of password
 */
 function checkPassword(event){
 	var value = password.value;
+
+	if (value !== lastPasswordValue){
+		password2.classList.remove("is-invalid");
+		password2.classList.remove("is-valid");
+		password2.value = "";
+	}
 
 	if (!checkInput(password)) return false;
 	if (!passwordGeneralRegexp.test(value)){
@@ -250,8 +260,11 @@ function checkPassword(event){
 		setInvalid(password, incorrectPasswordSecondary);
 		return false;
 	}
-	setValid(password);
-	return true;
+	else{
+		setValid(password);
+		return true;
+	}
+
 }
 
 
