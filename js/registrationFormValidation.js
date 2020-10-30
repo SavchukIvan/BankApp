@@ -43,7 +43,8 @@ const passpSeriesRegex = /^[абвгґдеєжзиіїйклмнопрстуфх
 const passpBookIDRegex = /^\d{6}$/;
 const passpCardIDRegex = /^\d{9}$/;
 const vatinRegex = /^\d{10}$|^\d{12}?$/;
-const phoneRegex = /^[2-9]\d{8}$/;
+const phoneRegex1 = /^\d{9}$/;
+const phoneRegex2 = /^[2-9].+/;
 const passwordGeneralRegexp = /^\w{8,40}$/i;
 const passwordNumRegex = /.{0,}\d+.{0,}/;
 const passwordUpperRegex = /.{0,}[A-Z]+.{0,}/;
@@ -62,7 +63,8 @@ const incorrectPasspSeries = "Серія паспорту має містити 
 const incorrectBookID = "Номер паспорту (книжечка) має складатися з 6 цифр";
 const incorrectCardID = "Номер паспорту (ID картка) має складатися з 9 цифр";
 const incorrectVATIN = "ІПН має складатися з 12 або з 10 цифр";
-const incorrectPhone = "Номер телефону має включати 9 цифр (2 - код оператора, 7 - номер абонента)";
+const incorrectPhone1 = "Номер телефону має включати 9 цифр (2 - код оператора, 7 - номер абонента)";
+const incorrectPhone2 = "Код оператора не може починатися з 0 або 1";
 const incorrectPasswordGeneral = "Пароль має бути не коротшим за 8 символів і має містити літери латиниці і числа та може включати символ '_'.";
 const incorrectPasswordSecondary = "Пароль має містити принаймні одну цифру та літеру верхнього регістру";
 const incorrectPassword2 = "Паролі не співпадають";
@@ -220,8 +222,12 @@ function checkPhone(event){
 	var value = phone.value;
 
 	if (!checkInput(phone)) return false;
-	if (!phoneRegex.test(value)){
-		setInvalid(phone, incorrectPhone);
+	if (!phoneRegex1.test(value)){
+		setInvalid(phone, incorrectPhone1);
+		return false;
+	}
+	if (!phoneRegex2.test(value)){
+		setInvalid(phone, incorrectPhone2);
 		return false;
 	}
 	setValid(phone);
@@ -230,10 +236,20 @@ function checkPhone(event){
 
 
 /*
+password validator uses last value of password to make some actions
+*/
+var lastPasswordValue = "";
+/*
 Listener for validation of password
 */
 function checkPassword(event){
 	var value = password.value;
+
+	if (value !== lastPasswordValue){
+		password2.classList.remove("is-invalid");
+		password2.classList.remove("is-valid");
+		password2.value = "";
+	}
 
 	if (!checkInput(password)) return false;
 	if (!passwordGeneralRegexp.test(value)){
@@ -244,8 +260,11 @@ function checkPassword(event){
 		setInvalid(password, incorrectPasswordSecondary);
 		return false;
 	}
-	setValid(password);
-	return true;
+	else{
+		setValid(password);
+		return true;
+	}
+
 }
 
 
@@ -310,15 +329,6 @@ setValid gives succes feedback for element without any messages
 function setValid(element){
 	element.classList.remove("is-invalid");
 	element.classList.add("is-valid");
-}
-
-
-/*
-unsetValidStatus drops succes or error feedback for element
-*/
-function unsetValidStatus(element){
-	element.classList.remove("is-valid");
-	element.classList.remove("is-invalid");
 }
 
 
