@@ -5,6 +5,11 @@ because it uses constant variables
 - from second one: regions and districts.
 */
 
+
+/*
+Last values of passport type and region, district are useful to recognize if user didn't changed
+its selections when event 'blur' occured, so in this case we have not to drop values in other fields.
+*/
 var lastPassportTypeValue = '';
 
 var lastRegionValue = '';
@@ -12,7 +17,7 @@ var lastDistrictValue = '';
 
 
 /*
-unsetValidStatus drops succes or error feedback for element
+unsetValidStatus drops succes or error feedback for element.
 */
 function unsetValidStatus(element){
 	element.classList.remove("is-valid");
@@ -20,6 +25,10 @@ function unsetValidStatus(element){
 }
 
 
+/*
+Listener for passwortType. It enables field passportID and enables or disables field
+passportSeries depending on type of passport.
+*/
 function onSelectPassportType(event){
 	var value = passportType.value;
 
@@ -43,9 +52,12 @@ function onSelectPassportType(event){
 	}
 }
 
-passportType.addEventListener('blur', onSelectPassportType);
 
-
+/*
+This listener for select-field region enables select-field district and clear value in it. 
+It set all available options (districts) for chosen region.
+Also it disables field cities and clear values for it.
+*/
 function onSelectRegion(event){
 	var value = region.value;
 
@@ -65,6 +77,10 @@ function onSelectRegion(event){
 }
 
 
+/*
+This listener for select-field district enables select-field city and clear value in it. 
+It set all available options (cities) for chosen district.
+*/
 function onSelectDistrict(event){
 	var value = district.value;
 
@@ -80,12 +96,12 @@ function onSelectDistrict(event){
 }
 
 
-
-region.addEventListener('blur', onSelectRegion);
-district.addEventListener('blur', onSelectDistrict);
-
-
-
+/*
+This function gets strings array of available in select options as parameter options.
+It generates HTML markup with tags <option> for all strings in options. Very first option
+is default and not present in options array. It is selected and disabled and has empty string value.
+Text of this option is defined as optional parameter defaultOptionText. Returns string with HTML.
+*/
 function createOptions(options, defaultOptionText="Обрати..."){
 	var selectInner = "<option selected disabled value=\"\">"+defaultOptionText+"</option>";
 	var option;
@@ -98,4 +114,15 @@ function createOptions(options, defaultOptionText="Обрати..."){
 }
 
 
+/*
+Binding listeners to events on select elements.
+*/
+passportType.addEventListener('blur', onSelectPassportType);
+region.addEventListener('blur', onSelectRegion);
+district.addEventListener('blur', onSelectDistrict);
+
+
+/*
+Add available options to select regions in HTML.
+*/
 region.innerHTML = createOptions(Array.from(regions.keys()));
