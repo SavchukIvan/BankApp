@@ -1,8 +1,9 @@
 import psycopg2
 
-
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
+
+from credentials import *
 
 
 class PostgresDb:
@@ -12,10 +13,10 @@ class PostgresDb:
         if cls._instance is None:
             cls._instance = object.__new__(cls)
             try:
-                connection = psycopg2.connect(host='localhost',
-                                              database='bank_app',
-                                              user='postgres',
-                                              password='admin044')
+                connection = psycopg2.connect(host=host,
+                                              database=database,
+                                              user=user,
+                                              password=password)
                 cursor = connection.cursor()
 
                 # execute a statement
@@ -26,10 +27,7 @@ class PostgresDb:
                 db_version = cursor.fetchone()
                 print(db_version)
 
-                engine = create_engine('postgresql://{}:{}@{}/{}'.format('postgres',
-                                                                         'admin044',
-                                                                         'localhost',
-                                                                         'bank_app'))
+                engine = create_engine('postgresql://{}:{}@{}/{}'.format(user, password, host, database))
 
                 Session = sessionmaker(bind=engine)
                 session = Session()
@@ -45,7 +43,7 @@ class PostgresDb:
         return cls._instance
 
     def __init__(self):
-        postgre_connection_string = 'postgresql://{}:{}@{}/{}'.format('postgres', 'admin044', 'localhost', 'bank_app')
+        postgre_connection_string = 'postgresql://{}:{}@{}/{}'.format(user, password, host, database)
         engine = create_engine(postgre_connection_string)
 
         Session = sessionmaker(bind=engine)
