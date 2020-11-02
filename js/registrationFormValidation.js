@@ -245,12 +245,6 @@ Listener for validation of password
 function checkPassword(event){
 	var value = password.value;
 
-	if (value !== lastPasswordValue){
-		password2.classList.remove("is-invalid");
-		password2.classList.remove("is-valid");
-		password2.value = "";
-	}
-
 	if (!checkInput(password)) return false;
 	if (!passwordGeneralRegexp.test(value)){
 		setInvalid(password, incorrectPasswordGeneral);
@@ -266,6 +260,20 @@ function checkPassword(event){
 	}
 
 }
+/*
+Listener to drop value from password2 when password changed
+*/
+function dropPassword2(event){
+	var value = password.value;
+
+	if (value !== lastPasswordValue){
+		password2.classList.remove("is-invalid");
+		password2.classList.remove("is-valid");
+		password2.value = "";
+	}
+}
+
+password.addEventListener("blur", dropPassword2, true)
 
 
 /*
